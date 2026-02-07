@@ -7,7 +7,7 @@ namespace TextFilterApp.UnitTests.Filters;
 public class FilterFactoryTests
 {
     [Fact]
-    public void CreateVowelMiddleFilter_ShouldReturnNonNull()
+    public void CreateVowelMiddleFilter_WhenCalled_ShouldReturnInstance()
     {
         // Act
         var result = FilterFactory.CreateVowelMiddleFilter();
@@ -17,7 +17,7 @@ public class FilterFactoryTests
     }
 
     [Fact]
-    public void CreateVowelMiddleFilter_ShouldReturnITextFilter()
+    public void CreateVowelMiddleFilter_WhenCalled_ShouldReturnITextFilterImplementation()
     {
         // Act
         var result = FilterFactory.CreateVowelMiddleFilter();
@@ -27,7 +27,7 @@ public class FilterFactoryTests
     }
 
     [Fact]
-    public void CreateVowelMiddleFilter_ShouldReturnWorkingFilter()
+    public void CreateVowelMiddleFilter_WhenUsedToFilter_ShouldRemoveVowelMiddleWords()
     {
         // Act
         var filter = FilterFactory.CreateVowelMiddleFilter();
@@ -39,7 +39,7 @@ public class FilterFactoryTests
     }
 
     [Fact]
-    public void CreateMinimumLengthFilter_ShouldReturnNonNull()
+    public void CreateMinimumLengthFilter_WhenCalled_ShouldReturnInstance()
     {
         // Act
         var result = FilterFactory.CreateMinimumLengthFilter(3);
@@ -49,7 +49,7 @@ public class FilterFactoryTests
     }
 
     [Fact]
-    public void CreateMinimumLengthFilter_ShouldReturnITextFilter()
+    public void CreateMinimumLengthFilter_WhenCalled_ShouldReturnITextFilterImplementation()
     {
         // Act
         var result = FilterFactory.CreateMinimumLengthFilter(3);
@@ -59,7 +59,7 @@ public class FilterFactoryTests
     }
 
     [Fact]
-    public void CreateMinimumLengthFilter_ShouldReturnWorkingFilter()
+    public void CreateMinimumLengthFilter_WhenUsedToFilter_ShouldRemoveShortWords()
     {
         // Act
         var filter = FilterFactory.CreateMinimumLengthFilter(4);
@@ -71,7 +71,7 @@ public class FilterFactoryTests
     }
 
     [Fact]
-    public void CreateContainsLetterFilter_ShouldReturnNonNull()
+    public void CreateContainsLetterFilter_WhenCalled_ShouldReturnInstance()
     {
         // Act
         var result = FilterFactory.CreateContainsLetterFilter('t');
@@ -81,7 +81,7 @@ public class FilterFactoryTests
     }
 
     [Fact]
-    public void CreateContainsLetterFilter_ShouldReturnITextFilter()
+    public void CreateContainsLetterFilter_WhenCalled_ShouldReturnITextFilterImplementation()
     {
         // Act
         var result = FilterFactory.CreateContainsLetterFilter('t');
@@ -91,7 +91,7 @@ public class FilterFactoryTests
     }
 
     [Fact]
-    public void CreateContainsLetterFilter_ShouldReturnWorkingFilter()
+    public void CreateContainsLetterFilter_WhenUsedToFilter_ShouldRemoveWordsContainingLetter()
     {
         // Act
         var filter = FilterFactory.CreateContainsLetterFilter('t');
@@ -103,7 +103,7 @@ public class FilterFactoryTests
     }
 
     [Fact]
-    public void AllFactoryMethods_ShouldReturnDistinctInstances()
+    public void CreateVowelMiddleFilter_WhenCalledMultipleTimes_ShouldReturnDistinctInstances()
     {
         // Act
         var filter1 = FilterFactory.CreateVowelMiddleFilter();

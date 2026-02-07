@@ -7,7 +7,7 @@ namespace TextFilterApp.UnitTests.Infrastructure;
 public class FileReaderFactoryTests
 {
     [Fact]
-    public void CreateStreamingTextFileReader_ShouldReturnNonNull()
+    public void CreateStreamingTextFileReader_WhenCalled_ShouldReturnInstance()
     {
         // Act
         var result = FileReaderFactory.CreateStreamingTextFileReader();
@@ -17,7 +17,7 @@ public class FileReaderFactoryTests
     }
 
     [Fact]
-    public void CreateStreamingTextFileReader_ShouldReturnIFileReader()
+    public void CreateStreamingTextFileReader_WhenCalled_ShouldReturnIFileReaderImplementation()
     {
         // Act
         var result = FileReaderFactory.CreateStreamingTextFileReader();
@@ -27,7 +27,7 @@ public class FileReaderFactoryTests
     }
 
     [Fact]
-    public void CreateStreamingTextFileReader_ShouldReturnWorkingReader()
+    public void CreateStreamingTextFileReader_WhenUsedToReadFile_ShouldReturnWords()
     {
         // Arrange
         using var testFile = new TemporaryTestFile("hello world");
