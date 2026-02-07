@@ -62,9 +62,5 @@ tests/
 
 ## Requirements
 
-- .NET 8.0 or higher
-- Works on Windows, macOS, and Linux
+- .NET 9.0 or higher
 
----
-
-*Detailed documentation and design decisions available upon request.*
