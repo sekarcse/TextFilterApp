@@ -9,6 +9,7 @@ namespace TextFilterApp.Infrastructure.FileReaders;
 internal sealed class StreamingTextFileReader : IFileReader
 {
     private const int BufferSize = 8192;
+    private const int MaxWordLength = 1_000;
 
     public IEnumerable<string> ReadWords(string filePath)
     {
@@ -54,6 +55,13 @@ internal sealed class StreamingTextFileReader : IFileReader
                 else
                 {
                     wordBuilder.Append(c);
+
+                    // Guard against excessively long string
+                    if (wordBuilder.Length >= MaxWordLength)
+                    {
+                        yield return wordBuilder.ToString();
+                        wordBuilder.Clear();
+                    }
                 }
             }
         }
