@@ -1,0 +1,20 @@
+# --- Build Outputs ---
+[Bb]in/
+[Oo]bj/
+publish/
+
+# --- IDEs (VS & VS Code) ---
+.vs/
+.vscode/
+*.user
+*.suo
+*.sln.docstates
+
+# --- NuGet & Packages ---
+# Modern .NET uses global cache, but this catches local leaks
+packages/
+*.nupkg
+
+# --- OS Specific ---
+.DS_Store
+Thumbs.db
