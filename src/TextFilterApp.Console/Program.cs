@@ -3,7 +3,7 @@ using TextFilterApp.Application.Services;
 using TextFilterApp.Domain.Interfaces;
 using TextFilterApp.Infrastructure.FileReaders;
 
-string filePath = args.Length > 0 ? args[0] : "input.txt";
+string filePath = args.Length > 0 ? args[0] : "samples/input.txt";
 
 IFileReader fileReader = FileReaderFactory.CreateStreamingTextFileReader();
 ITextFilter[] filters =
