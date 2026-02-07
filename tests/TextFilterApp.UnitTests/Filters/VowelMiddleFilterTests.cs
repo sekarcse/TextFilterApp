@@ -1,10 +1,11 @@
+using FluentAssertions;
 using TextFilterApp.Application.Filters;
 
 namespace TextFilterApp.UnitTests.Filters;
 
 public class VowelMiddleFilterTests
 {
-    private readonly VowelMiddleFilter _filter = new();
+    private readonly VowelMiddleFilter _sut = new();
 
     [Theory]
     [InlineData("clean", true)]      // length 5, middle index 2 = 'e' (vowel) -> filtered
@@ -18,21 +19,21 @@ public class VowelMiddleFilterTests
         var input = new[] { word };
 
         // Act
-        var result = _filter.Apply(input).ToList();
+        var result = _sut.Apply(input).ToList();
 
         // Assert
         if (shouldBeFiltered)
-            Assert.Empty(result);
+            result.Should().BeEmpty();
         else
-            Assert.Single(result);
+            result.Should().ContainSingle();
     }
 
     [Fact]
     public void Apply_WithEmptyCollection_ShouldReturnEmpty()
     {
-        var result = _filter.Apply([]).ToList();
+        var result = _sut.Apply([]).ToList();
 
-        Assert.Empty(result);
+        result.Should().BeEmpty();
     }
 
     [Fact]
@@ -42,21 +43,21 @@ public class VowelMiddleFilterTests
         var input = new[] { "clean", "the", "what", "rather", "currently" };
 
         // Act
-        var result = _filter.Apply(input).ToList();
+        var result = _sut.Apply(input).ToList();
 
         // Assert - "the" and "rather" should remain
-        Assert.Equal(2, result.Count);
-        Assert.Contains("the", result);
-        Assert.Contains("rather", result);
+        result.Should().HaveCount(2)
+            .And.Contain("the")
+            .And.Contain("rather");
     }
 
     [Fact]
     public void Apply_SingleCharacterWord_ShouldFilterIfVowel()
     {
-        var result = _filter.Apply(["a", "b"]).ToList();
+        var result = _sut.Apply(["a", "b"]).ToList();
 
-        Assert.Single(result);
-        Assert.Equal("b", result[0]);
+        result.Should().ContainSingle()
+            .Which.Should().Be("b");
     }
 
     [Theory]
@@ -64,7 +65,7 @@ public class VowelMiddleFilterTests
     [InlineData("THE", false)]     // uppercase, no vowel in middle
     public void Apply_ShouldBeCaseInsensitive(string word, bool shouldBeFiltered)
     {
-        var result = _filter.Apply([word]).ToList();
+        var result = _sut.Apply([word]).ToList();
 
         if (shouldBeFiltered)
             Assert.Empty(result);
