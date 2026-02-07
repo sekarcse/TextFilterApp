@@ -5,7 +5,7 @@ using TextFilterApp.Domain.Interfaces;
 /// For odd-length words, the middle character is checked (e.g. "clean" -> 'e').
 /// For even-length words, both middle characters are checked (e.g. "what" -> 'h' and 'a').
 /// </summary>
-public sealed class VowelMiddleFilter : ITextFilter
+internal sealed class VowelMiddleFilter : ITextFilter
 {
     private static readonly HashSet<char> Vowels = ['a', 'e', 'i', 'o', 'u'];
 
