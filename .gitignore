@@ -15,6 +15,9 @@ publish/
 packages/
 *.nupkg
 
+# --- Sample/Input Data ---
+input.txt
+
 # --- OS Specific ---
 .DS_Store
 Thumbs.db

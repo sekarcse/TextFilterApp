@@ -1,5 +1,7 @@
 using TextFilterApp.Domain.Interfaces;
 
+namespace TextFilterApp.Application.Filters;
+
 /// <summary>
 /// Filters out words that have a vowel in the middle position(s).
 /// For odd-length words, the middle character is checked (e.g. "clean" -> 'e').
