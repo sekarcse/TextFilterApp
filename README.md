@@ -2,7 +2,7 @@
 
 A text filtering application demonstrating Clean Architecture principles. Processes text files efficiently using streaming, regardless of file size.
 
-[![Build and Test](https://github.com/YOUR_USERNAME/TextFilterApp/actions/workflows/dotnet.yml/badge.svg)](https://github.com/YOUR_USERNAME/TextFilterApp/actions/workflows/dotnet.yml)
+[![Build and Test](https://github.com/sekarcse/TextFilterApp/actions/workflows/dotnet.yml/badge.svg)](https://github.com/YOUR_USERNAME/TextFilterApp/actions/workflows/dotnet.yml)
 
 ## Quick Start
 ```bash
