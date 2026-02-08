@@ -72,4 +72,25 @@ public class VowelMiddleFilterTests
         else
             Assert.Single(result);
     }
+
+    [Theory]
+    [InlineData("he!lo", true)]      // length 5, middle index 2 = '!' (not vowel) -> kept
+    [InlineData("wa!n", false)]      // length 4, middle indices 1-2 = 'a!' -> 'a' is vowel -> filtered
+    [InlineData("tx-st", true)]      // length 5, middle index 2 = '-' (not vowel) -> kept
+    [InlineData("wo@rd", true)]      // length 5, middle index 2 = '@' (not vowel) -> kept
+    [InlineData("h!llo", true)]      // length 5, middle index 2 = '!' (not vowel) -> kept
+    public void Apply_WithSpecialCharInMiddle_ShouldHandleCorrectly(string word, bool shouldBeKept)
+    {
+        // Arrange
+        var input = new[] { word };
+
+        // Act
+        var result = _sut.Apply(input).ToList();
+
+        // Assert
+        if (shouldBeKept)
+            result.Should().ContainSingle("special char in middle position is not a vowel, so word is kept");
+        else
+            result.Should().BeEmpty("one of the middle characters is a vowel, so word is filtered out");
+    }
 }
